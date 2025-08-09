@@ -1,3 +1,4 @@
-export const JWT_SECRET = "123123123";
-// Make sure to replace this with your actual Gemini API Key
+import dotenv from 'dotenv';
+dotenv.config();
+export const JWT_SECRET = process.env.JWT_SECRET;
 //# sourceMappingURL=config.js.map

@@ -6,9 +6,10 @@ import { userMiddleware } from "./middleware.js";
 import user_route from "./routes/user_route.js";
 import content_route from "./routes/content_route.js";
 import { nanoid } from "nanoid";
-import dotenv from 'dotenv'
-dotenv.config();
+import cors from 'cors'
+
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 app.use("/api/v1", user_route);
