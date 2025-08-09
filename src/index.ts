@@ -6,6 +6,8 @@ import { userMiddleware } from "./middleware.js";
 import user_route from "./routes/user_route.js";
 import content_route from "./routes/content_route.js";
 import { nanoid } from "nanoid";
+import dotenv from 'dotenv'
+dotenv.config();
 const app = express();
 app.use(express.json());
 
