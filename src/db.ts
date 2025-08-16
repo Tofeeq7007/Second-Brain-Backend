@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 mongoose.connect('mongodb+srv://Tofeeq:20fQSIsEP72YykIy@cluster0.kikxzbk.mongodb.net/Brainly');
 enum Tag_type {
@@ -21,6 +22,8 @@ const TagsSchema = new Schema({
 // Content Schema
 const ContentSchema = new Schema({
     title:String,
+    description:String,
+    image:String,
     link:String,
     type:String,
     tags: {type:Schema.Types.ObjectId, ref:'Tags'},
