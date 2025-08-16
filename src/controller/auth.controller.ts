@@ -8,6 +8,9 @@ import bcrypt from "bcryptjs";
 export const user_signUp = async (req:Request,res:Response)=>{
     const username = req.body.name;
     const password = req.body.password;
+    console.log(username);
+    console.log(password);
+    
     // Zod Validation
     const Requirebody = z.object({
         name:z.string()
@@ -75,6 +78,7 @@ export const user_signUp = async (req:Request,res:Response)=>{
 export const user_signin = async(req:Request, res:Response)=>{
     const username = req.body.name;
     const password = req.body.password;
+    
 
     try{
 
@@ -105,4 +109,9 @@ export const user_signin = async(req:Request, res:Response)=>{
             message:"Server Error"
         })
     }
+}
+export const checkLogin = (req:Request,res:Response)=>{
+    return res.json({
+        message:"User Exist"
+    })
 }

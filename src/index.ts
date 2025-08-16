@@ -1,3 +1,12 @@
+
+declare global {
+    namespace Express{
+        export interface Request{
+            userId?:string;
+        }
+    }
+}
+
 import express from "express"
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken"
@@ -9,7 +18,11 @@ import { nanoid } from "nanoid";
 import cors from 'cors'
 
 const app = express();
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173', // your frontend origin
+  credentials: true,               // allow cookies/auth headers
+  allowedHeaders: ["Content-Type", "Authorization"] 
+}));
 app.use(express.json());
 
 app.use("/api/v1", user_route);

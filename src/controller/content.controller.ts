@@ -1,10 +1,18 @@
 import { ContentModel, TagsModel, UserModel } from "../db.js";
 import type { Request,Response } from "express";
+import { getUrlPreview } from "../routes/whatapp_url.js";
 export const Push_Content = async(req:Request,res:Response)=>{
     const link = req.body.link;
     const title = req.body.title;
     
     const tag = req.body.tag;
+    console.log(title);
+    console.log(link);
+    console.log(tag);
+    
+    const data = await getUrlPreview(link);
+    console.log(data.description);
+    console.log(data.image);
     
 
     const Tag = await TagsModel.create({
@@ -15,6 +23,8 @@ export const Push_Content = async(req:Request,res:Response)=>{
     await ContentModel.create({
         link,
         title,
+        description:data.description,
+        image:data.image,
         type:req.body.type,
         //@ts-ignore
         userId:req.userId,
